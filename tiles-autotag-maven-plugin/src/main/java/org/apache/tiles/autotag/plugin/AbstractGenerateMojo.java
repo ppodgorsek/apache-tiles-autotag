@@ -34,7 +34,6 @@ import java.util.Properties;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.tiles.autotag.core.OutputLocator;
@@ -88,10 +87,10 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
 	@Parameter(required = true)
     String packageName;
 
-	@Component
+	@Parameter( defaultValue = "${project}", readonly = true )
     MavenProject project;
 
-	@Component
+	@Parameter( defaultValue = "${project}", readonly = true )
     BuildContext buildContext;
 
 	OutputLocator classesOutputLocator;
