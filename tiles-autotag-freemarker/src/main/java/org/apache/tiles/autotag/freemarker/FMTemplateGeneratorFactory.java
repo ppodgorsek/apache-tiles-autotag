@@ -51,7 +51,7 @@ public class FMTemplateGeneratorFactory implements TemplateGeneratorFactory {
     /**
      * Constructor.
      *
-     * @param classesOutputDirectory Directory where code will be placed.
+     * @param classesOutputLocator Directory where code will be placed.
      * @param velocityEngine The Velocity engine.
      * @param templateGeneratorBuilder The template generator builder.
      */

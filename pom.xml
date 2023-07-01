@@ -24,23 +24,32 @@
 
 	<groupId>com.github.ppodgorsek.apache</groupId>
 	<artifactId>tiles-autotag</artifactId>
-	<version>2.0-SNAPSHOT</version>
+	<version>2.0</version>
 	<packaging>pom</packaging>
 	<name>Autotags</name>
 	<description>Automatic generation of tags. This is a fork of the official Apache project that relies on updated dependencies.</description>
 	<url>http://tiles.apache.org/tiles-autotag/</url>
 
-	<scm>
-		<connection>scm:svn:http://svn.apache.org/repos/asf/tiles/autotag/trunk/</connection>
-		<developerConnection>scm:svn:https://svn.apache.org/repos/asf/tiles/autotag/trunk/</developerConnection>
-		<url>http://svn.apache.org/viewvc/tiles/autotag/trunk/</url>
-	</scm>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-	<issueManagement>
-		<system>JIRA</system>
-		<url>https://issues.apache.org/jira/browse/AUTOTAG</url>
-		<!-- dev@tiles.apache.org :: this line satisfies INFRA-3329 -->
-	</issueManagement>
+	<developers>
+		<developer>
+			<id>ppodgorsek</id>
+			<name>Paul Podgorsek</name>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/ppodgorsek/apache-tiles-autotag.git</connection>
+		<developerConnection>scm:git:https://github.com/ppodgorsek/apache-tiles-autotag.git</developerConnection>
+		<url>https://github.com/ppodgorsek/apache-tiles-autotag</url>
+	</scm>
 
 	<modules>
 		<module>tiles-autotag-core-runtime</module>
@@ -52,11 +61,20 @@
 		<module>assembly</module>
 	</modules>
 
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/ppodgorsek/apache-tiles-autotag/issues</url>
+	</issueManagement>
+
 	<distributionManagement>
-		<site>
-			<id>apache-site</id>
-			<url>scm:svn:https://svn.apache.org/repos/asf/tiles/site/staging/tiles-autotag</url>
-		</site>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
 
 	<properties>
@@ -72,19 +90,21 @@
 		<xstream.version>1.4.20</xstream.version>
 
 		<checksum-maven-plugin.version>1.6</checksum-maven-plugin.version>
-		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+		<maven.version>3.9.3</maven.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
 		<maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-		<maven.version>3.9.3</maven.version>
 		<maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
 		<maven-linkcheck-plugin.version>1.1</maven-linkcheck-plugin.version>
 		<maven-plugin-annotations.version>3.9.0</maven-plugin-annotations.version>
 		<maven-plugin-api.version>3.9.3</maven-plugin-api.version>
 		<maven-plugin-plugin.version>3.9.0</maven-plugin-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<plexus-build-api.version>0.0.7</plexus-build-api.version>
 		<rat-maven-plugin.version>1.0-alpha-3</rat-maven-plugin.version>
 	</properties>
@@ -291,10 +311,6 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${maven-jar-plugin.version}</version>
 					<configuration>
@@ -306,6 +322,11 @@
 							</manifest>
 						</archive>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -340,36 +361,10 @@
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>${lifecycle-mapping.version}</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-plugin-plugin
-										</artifactId>
-										<versionRange>
-											[3.2,)
-										</versionRange>
-										<goals>
-											<goal>descriptor</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -385,11 +380,52 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>${maven-gpg-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
