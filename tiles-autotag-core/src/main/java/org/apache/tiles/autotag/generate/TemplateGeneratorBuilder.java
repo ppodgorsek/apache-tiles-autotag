@@ -84,7 +84,7 @@ public class TemplateGeneratorBuilder {
     /**
      * Sets the classes output directory.
      *
-     * @param classesOutputDirectory The classes output directory.
+     * @param classesOutputLocator The classes' output directory.
      * @return This instance.
      */
     public TemplateGeneratorBuilder setClassesOutputLocator(OutputLocator classesOutputLocator) {
@@ -95,7 +95,7 @@ public class TemplateGeneratorBuilder {
     /**
      * Sets the resources output directory.
      *
-     * @param resourcesOutputDirectory The resources output directory.
+     * @param resourcesOutputLocator The resources' output directory.
      * @return This instance.
      */
     public TemplateGeneratorBuilder setResourcesOutputLocator(OutputLocator resourcesOutputLocator) {
