@@ -99,7 +99,7 @@ public class FMModelGeneratorTest {
         File effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/freemarker/test/DoStuffFMModel.java");
         assertTrue(effectiveFile.exists());
         InputStream effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffFMModel.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 
@@ -134,7 +134,7 @@ public class FMModelGeneratorTest {
         effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/freemarker/test/DoStuffNoBodyFMModel.java");
         assertTrue(effectiveFile.exists());
         effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffNoBodyFMModel.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 

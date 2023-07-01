@@ -101,7 +101,7 @@ public class TagClassGeneratorTest {
         File effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/jsp/test/DoStuffTag.java");
         assertTrue(effectiveFile.exists());
         InputStream effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffTag.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 
@@ -134,7 +134,7 @@ public class TagClassGeneratorTest {
         effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/jsp/test/DoStuffNoBodyTag.java");
         assertTrue(effectiveFile.exists());
         effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffNoBodyTag.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 

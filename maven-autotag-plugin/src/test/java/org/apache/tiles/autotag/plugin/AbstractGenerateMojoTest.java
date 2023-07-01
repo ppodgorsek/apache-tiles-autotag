@@ -54,11 +54,12 @@ public class AbstractGenerateMojoTest {
      */
     @Test
     public void testExecute() throws IOException, MojoExecutionException {
-        MavenProject mavenProject = createMock(MavenProject.class);
+
+    	MavenProject mavenProject = createMock(MavenProject.class);
         BuildContext buildContext = createMock(BuildContext.class);
         TemplateGeneratorFactory factory = createMock(TemplateGeneratorFactory.class);
         TemplateGenerator generator = createMock(TemplateGenerator.class);
-        @SuppressWarnings("unchecked")
+
         Map<String, String> params = createMock(Map.class);
         AbstractGenerateMojo mojo = createMockBuilder(AbstractGenerateMojo.class).createMock();
         List<String> classpathElements = new ArrayList<String>();

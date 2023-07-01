@@ -59,7 +59,7 @@ import org.junit.Test;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
+import com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider;
 
 /**
  * Tests {@link CreateDescriptorMojo}.
@@ -105,7 +105,12 @@ public class CreateDescriptorMojoTest {
         replay(mavenProject, buildContext, scanner);
         mojo.execute();
         InputStream sis = new FileInputStream(new File(temp, "META-INF/template-suite.xml"));
-        XStream xstream = new XStream(new Sun14ReflectionProvider());
+
+        XStream xstream = new XStream(new SunUnsafeReflectionProvider());
+        xstream.allowTypesByWildcard(new String[] { 
+                "org.apache.tiles.**"
+                });
+
         TemplateSuite suite = (TemplateSuite) xstream.fromXML(sis);
         sis.close();
         assertEquals("test", suite.getName());

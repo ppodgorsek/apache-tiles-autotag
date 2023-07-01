@@ -100,7 +100,7 @@ public class VelocityDirectiveGeneratorTest {
         File effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/velocity/test/DoStuffDirective.java");
         assertTrue(effectiveFile.exists());
         InputStream effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffDirective.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 
@@ -135,7 +135,7 @@ public class VelocityDirectiveGeneratorTest {
         effectiveFile = new File(tempDir, "/org/apache/tiles/autotag/velocity/test/DoStuffNoBodyDirective.java");
         assertTrue(effectiveFile.exists());
         effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for DoStuffNoBodyDirective.java should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 
