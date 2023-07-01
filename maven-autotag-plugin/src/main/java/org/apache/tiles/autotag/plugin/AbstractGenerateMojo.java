@@ -45,7 +45,7 @@ import org.apache.velocity.app.VelocityEngine;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
+import com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider;
 
 /**
  * Abstract class to generate boilerplate code starting from template model classes.
@@ -96,7 +96,9 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
 
 	OutputLocator classesOutputLocator;
 	OutputLocator resourcesOutputLocator;
-	
+
+	private ClassLoader cl;
+
     /** {@inheritDoc} */
     public void execute() throws MojoExecutionException {
         try {
@@ -105,7 +107,11 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
         	long lastModified = templateSuite.getLastModified();
         	InputStream stream = templateSuite.getInputStream();
             try {
-	            XStream xstream = new XStream(new Sun14ReflectionProvider());
+	            XStream xstream = new XStream(new SunUnsafeReflectionProvider());
+	            xstream.allowTypesByWildcard(new String[] { 
+	                    "org.apache.tiles.**"
+	                    });
+
 	            suite = (TemplateSuite) xstream.fromXML(stream);
             } finally {
 	            stream.close();
@@ -138,7 +144,6 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
 
 	private void addResourceDirectory(String directory) {
 		boolean addResource = true;
-		@SuppressWarnings("unchecked")
 		List<Resource> resources = project.getResources();
 		for(Resource resource: resources) {
 			if(directory.equals(resource.getDirectory())) {
@@ -154,7 +159,6 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
 
 	private void addCompileSourceRoot(String directory) {
 		boolean addResource = true;
-		@SuppressWarnings("unchecked")
 		List<String> roots = project.getCompileSourceRoots();
 		for(String root: roots) {
 			if(directory.equals(root)) {
@@ -196,7 +200,8 @@ public abstract class AbstractGenerateMojo extends AbstractMojo {
             urls[i++] = new File(classpathElement).toURI().toURL();
         }
 
-        ClassLoader cl = new URLClassLoader( urls );
+        cl = new URLClassLoader( urls );
+
         return cl.getResource(META_INF_TEMPLATE_SUITE_XML).openConnection();
     }
 

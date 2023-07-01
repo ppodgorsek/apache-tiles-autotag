@@ -57,7 +57,6 @@ public class BasicTemplateGeneratorTest {
         TemplateClass templateClass = createMock(TemplateClass.class);
         TemplateSuiteGenerator templateSuiteGenerator = createMock(TemplateSuiteGenerator.class);
         TemplateClassGenerator templateClassGenerator = createMock(TemplateClassGenerator.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         List<TemplateClass> templateClasses = new ArrayList<TemplateClass>();
 

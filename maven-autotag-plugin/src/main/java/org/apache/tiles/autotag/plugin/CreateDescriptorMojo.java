@@ -155,7 +155,6 @@ public class CreateDescriptorMojo extends AbstractMojo {
 
 	private void addResourceDirectory(String directory) {
 		boolean addResource = true;
-		@SuppressWarnings("unchecked")
 		List<Resource> resources = project.getResources();
 		for(Resource resource: resources) {
 			if(directory.equals(resource.getDirectory())) {

@@ -104,7 +104,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 
@@ -133,7 +132,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 
@@ -161,7 +159,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 
@@ -189,7 +186,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 
@@ -197,7 +193,7 @@ public class AbstractTemplateSuiteGeneratorTest {
         expect(generator.getFilename(packageName, suite, parameters)).andReturn("myfile.txt");
         String sampleVmPath = "/sample.vm";
         expect(generator.getTemplatePath(packageName, suite, parameters)).andReturn(sampleVmPath);
-        expect(velocityEngine.getTemplate("/sample.vm")).andThrow(new Exception());
+        expect(velocityEngine.getTemplate("/sample.vm")).andThrow(new ResourceNotFoundException("Not found"));
 
         replay(velocityEngine, generator, suite, template, parameters);
         generator.generate(locator, packageName, suite, parameters);
@@ -217,7 +213,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 
@@ -227,7 +222,7 @@ public class AbstractTemplateSuiteGeneratorTest {
         expect(generator.getTemplatePath(packageName, suite, parameters)).andReturn(sampleVmPath);
         expect(velocityEngine.getTemplate("/sample.vm")).andReturn(template);
         template.merge(isA(VelocityContext.class), isA(Writer.class));
-        expectLastCall().andThrow(new IOException());
+        expectLastCall().andThrow(new ResourceNotFoundException("Not found"));
 
         replay(velocityEngine, generator, suite, template, parameters);
         generator.generate(locator, packageName, suite, parameters);
@@ -247,7 +242,6 @@ public class AbstractTemplateSuiteGeneratorTest {
         OutputLocator locator = new DirectoryOutputLocator(directory);
         TemplateSuite suite = createMock(TemplateSuite.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
 

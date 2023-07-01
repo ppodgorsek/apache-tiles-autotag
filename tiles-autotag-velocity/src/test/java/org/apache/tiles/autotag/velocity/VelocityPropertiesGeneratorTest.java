@@ -120,7 +120,7 @@ public class VelocityPropertiesGeneratorTest {
         File effectiveFile = new File(tempDir, "META-INF/velocity.properties");
         assertTrue(effectiveFile.exists());
         InputStream effective = new FileInputStream(effectiveFile);
-        assertTrue(IOUtils.contentEquals(effective, expected));
+        assertTrue("The contents of both input streams for velocity.properties.test should be equal", IOUtils.contentEquals(effective, expected));
         effective.close();
         expected.close();
 

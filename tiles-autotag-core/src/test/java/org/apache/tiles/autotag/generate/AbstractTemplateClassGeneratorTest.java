@@ -105,7 +105,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
@@ -135,7 +134,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
@@ -164,7 +162,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
@@ -193,7 +190,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
@@ -203,7 +199,7 @@ public class AbstractTemplateClassGeneratorTest {
         expect(generator.getFilename(packageName, suite, clazz, parameters, runtimeClass, requestClass)).andReturn("myfile.txt");
         String sampleVmPath = "/sample.vm";
         expect(generator.getTemplatePath(packageName, suite, clazz, parameters, runtimeClass, requestClass)).andReturn(sampleVmPath);
-        expect(velocityEngine.getTemplate("/sample.vm")).andThrow(new Exception());
+        expect(velocityEngine.getTemplate("/sample.vm")).andThrow(new ResourceNotFoundException("Not found"));
 
         replay(velocityEngine, generator, suite, clazz, template, parameters);
         generator.generate(locator, packageName, suite, clazz, parameters, runtimeClass, requestClass);
@@ -224,7 +220,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
@@ -236,7 +231,7 @@ public class AbstractTemplateClassGeneratorTest {
         expect(generator.getTemplatePath(packageName, suite, clazz, parameters, runtimeClass, requestClass)).andReturn(sampleVmPath);
         expect(velocityEngine.getTemplate("/sample.vm")).andReturn(template);
         template.merge(isA(VelocityContext.class), isA(Writer.class));
-        expectLastCall().andThrow(new IOException());
+        expectLastCall().andThrow(new ResourceNotFoundException("Not found"));
 
         replay(velocityEngine, generator, suite, clazz, template, parameters);
         generator.generate(locator, packageName, suite, clazz, parameters, runtimeClass, requestClass);
@@ -257,7 +252,6 @@ public class AbstractTemplateClassGeneratorTest {
         TemplateSuite suite = createMock(TemplateSuite.class);
         TemplateClass clazz = createMock(TemplateClass.class);
         Template template = createMock(Template.class);
-        @SuppressWarnings("unchecked")
         Map<String, String> parameters = createMock(Map.class);
         String packageName = "org.apache.tiles.autotag.test";
         String runtimeClass = "org.apache.tiles.autotag.test.DoStuffRuntime";
