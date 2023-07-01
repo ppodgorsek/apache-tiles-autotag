@@ -48,7 +48,7 @@
 		<module>tiles-autotag-jsp</module>
 		<module>tiles-autotag-freemarker</module>
 		<module>tiles-autotag-velocity</module>
-		<module>maven-autotag-plugin</module>
+		<module>tiles-autotag-maven-plugin</module>
 		<module>assembly</module>
 	</modules>
 
@@ -93,11 +93,6 @@
 		<dependencies>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>maven-autotag-plugin</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
 				<artifactId>tiles-autotag-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -114,6 +109,11 @@
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>tiles-autotag-jsp</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>tiles-autotag-maven-plugin</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

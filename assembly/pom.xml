@@ -37,10 +37,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>maven-autotag-plugin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<artifactId>tiles-autotag-core</artifactId>
 		</dependency>
 		<dependency>
@@ -54,6 +50,10 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>tiles-autotag-jsp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>tiles-autotag-maven-plugin</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
