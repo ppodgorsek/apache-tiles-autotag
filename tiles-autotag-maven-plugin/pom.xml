@@ -28,9 +28,9 @@
 		<version>2.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>maven-autotag-plugin</artifactId>
+	<artifactId>tiles-autotag-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<name>maven-autotag-plugin Maven Mojo</name>
+	<name>tiles-autotag-maven-plugin Maven Mojo</name>
 	<description>This is a fork of the official Apache project that relies on updated dependencies.</description>
 
 	<properties>
