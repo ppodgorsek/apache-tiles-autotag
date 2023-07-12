@@ -54,7 +54,6 @@
             <li>{autotag-dir}/maven-autotag-plugin/target/maven-autotag-plugin-${version}.jar</li>
             <li>{autotag-dir}/tiles-autotag-core/target/tiles-autotag-core-${version}.jar</li>
             <li>{autotag-dir}/tiles-autotag-core-runtime/target/tiles-autotag-core-runtime-${version}.jar</li>
-            <li>{autotag-dir}/tiles-autotag-freemarker/target/tiles-autotag-freemarker-${version}.jar</li>
             <li>{autotag-dir}/tiles-autotag-jsp/target/tiles-autotag-jsp-${version}.jar</li>
             <li>{autotag-dir}/tiles-autotag-velocity/target/tiles-autotag-velocity-${version}.jar</li>
             </ul>
