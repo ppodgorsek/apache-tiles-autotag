@@ -18,14 +18,14 @@
 ~~ under the License.
 ~~
          -----------
-         Building a tag library for Freemarker, JSP or Velocity
+         Building a tag library for JSP or Velocity
          -----------
          
-Building a tag library for Freemarker, JSP or Velocity
+Building a tag library for JSP or Velocity
 
   Once you have {{{./taglib.html}created a generic tag library}},
   Autotag will automatically generate the corresponding library
-  for Freemarker, JSP, or Velocity. You just create a maven project 
+  for JSP, or Velocity. You just create a maven project 
   and include in <<<pom.xml>>>:
   
   * The appropriate implementation of tiles-request as a dependency. 
@@ -80,10 +80,6 @@ Plugin goals
   [generate-jsp] generates the files required for a JSP tag library. It can then be included
   in a JSP using the configured taglibURI.
   
-  [generate-freemarker] generates the files required for freemarker user-defined directives.
-  The directives can then be made available to freemarker by adding an instance of the 
-  generated class <<<...FMModelRepository>>> to the freemarker template model.
-  
   [generate-velocity] generates the files required for velocity user directives. The directives
   can be made available to Velocity by setting the <<<userdirective>>> property, either manually
   or by using the generated file <<<META-INF/velocity.properties>>>.
@@ -91,9 +87,6 @@ Plugin goals
 Plugin configuration
 
   [packageName] the destination package for the generated classes.
-  
-  [freemarkerRuntime] the runtime implementation of TilesRequest to use for freemarker, for 
-  instance <<<org.apache.tiles.request.freemarker.autotag.FreemarkerAutotagRuntime>>>.
   
   [jspRuntime] the runtime implementation of TilesRequest to use for JSP, for 
   instance <<<org.apache.tiles.request.jsp.autotag.JSPAutotagRuntime>>>.
