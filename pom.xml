@@ -55,7 +55,6 @@
 		<module>tiles-autotag-core-runtime</module>
 		<module>tiles-autotag-core</module>
 		<module>tiles-autotag-jsp</module>
-		<module>tiles-autotag-freemarker</module>
 		<module>tiles-autotag-velocity</module>
 		<module>tiles-autotag-maven-plugin</module>
 		<module>assembly</module>
@@ -119,11 +118,6 @@
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>tiles-autotag-core-runtime</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>tiles-autotag-freemarker</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
