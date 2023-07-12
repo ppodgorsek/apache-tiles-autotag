@@ -6,6 +6,5 @@
 
    The binary distribution contains software developed by:
 
-   Visigoth Software Society (Freemarker): http://freemarker.org/
    Codehaus (QDox, XStream): http://mvel.codehaus.org/
 

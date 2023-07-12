@@ -25,7 +25,7 @@ Creating a generic tag library
 
   A generic tag library is a jar file including the classes that implement
   the tags and a library descriptor <<<META-INF/template-suite.xml>>>, that can be used by
-  Autotag to build specific tag libraries for Freemarker, JSP, and Velocity.
+  Autotag to build specific tag libraries for JSP and Velocity.
   
   The structure of the library descriptor is rather complex; fortunately 
   Autotag can generate it for you by parsing the sources.
